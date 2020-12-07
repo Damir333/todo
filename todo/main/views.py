@@ -4,7 +4,8 @@ data = {
     'lists': [
         {'name': 'Работа', 'is_done': True, 'date': '01.12.2019'},
         {'name': 'Дом', 'is_done': False},
-        {'name': 'Учеба', 'is_done': True}
+        {'name': 'Учеба', 'is_done': True},
+
     ],
     'user_name': 'Admin',
 }
