@@ -3,9 +3,7 @@ from django.template.defaulttags import register
 
 @register.filter
 def get_count(lists):
-    lst = []
-    count = 0
-    need_lines = 0
+    lst, count, need_lines = [], 0, 0
     for row in lists:
         count += 1
     need_lines = 6 - count
