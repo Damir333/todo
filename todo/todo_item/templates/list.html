@@ -63,10 +63,13 @@
                             </svg>
                         </a>
                     </div>
+
                     <div class="calendarik">
-                        <a href='#'>
-                            <img src=" /static/images/calendar.png" alt="calendar" width="26px" height="24px">
-                        </a>
+                        {% if row.date %}
+                             <a href='#'><li>{{ row.date }}</li></a>
+                        {% else %}
+                            <a href='#'><img src=" /static/images/calendar.png" alt="calendar" width="26px" height="24px"></a>
+                        {% endif %}
                     </div>
                     <div class="table-row_table_icon">
                         <a class="delete_button" href="#">
@@ -81,7 +84,7 @@
                 </div>
             </div>
             {% endfor %}
-            {% for i in  lists|get_count %}
+            {% for i in lists|get_count %}
                 <div class="table-data__table-row"></div>
             {% endfor %}
         </div>

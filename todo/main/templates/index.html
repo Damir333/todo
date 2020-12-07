@@ -1,3 +1,4 @@
+{% load get_count %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -78,7 +79,9 @@
                     </div>
                 </div>
             {% endfor %}
-
+            {% for i in  lists|get_count %}
+                <div class="table-data__table-row"></div>
+            {% endfor %}
         </div>
     </section>
 
