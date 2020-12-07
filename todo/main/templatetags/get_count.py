@@ -8,7 +8,7 @@ def get_count(lists):
     need_lines = 0
     for row in lists:
         count += 1
-    need_lines = 8 - count
+    need_lines = 6 - count
     while need_lines:
         lst.append(need_lines)
         need_lines -= 1
