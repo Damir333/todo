@@ -3,10 +3,7 @@ from main.models import ListModel
 
 
 def main_view(request):
-    lists = ListModel.objects.filter(
-        user=request.user,
-        id=1
-    )
+    lists = ListModel.objects.filter(user=request.user)
 
     # new_list = [
     #     ListModel.objects.create(

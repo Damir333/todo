@@ -4,8 +4,8 @@ from todo_item.models import ItemModel
 
 def item_view(request):
     lists = ItemModel.objects.filter(
-        listmodel_id=request.user,
-        id=1
+        listmodel=request.user,
+        id=5
     )
 
     # new_list = [
