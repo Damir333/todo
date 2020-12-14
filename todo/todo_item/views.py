@@ -1,16 +1,23 @@
 from django.shortcuts import render
-
-data = {
-    'lists': [
-        {'name': 'Велопрогулка', 'is_done': True, 'date': '01.12.2019'},
-        {'name': 'СноуПарк', 'is_done': False},
-        {'name': 'Дайвинг', 'is_done': True},
-        {'name': 'ПрыжокСпарашутом', 'is_done': True},
-    ],
-    'user_name': 'Admin',
-}
+from todo_item.models import ItemModel
 
 
 def item_view(request):
-    content = data
-    return render(request, 'list.html', content)
+    lists = ItemModel.objects.filter(
+        listmodel_id=request.user,
+        id=1
+    )
+
+    # new_list = [
+    #     ListModel.objects.create(
+    #         name=f'Новый список{i}',
+    #         user=request.user
+    #     )
+    #     for i in [5, 6, 7]
+    # ]
+
+    context = {
+        'lists': lists,
+        'user_name': request.user.username
+    }
+    return render(request, 'list.html', context)
