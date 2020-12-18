@@ -22,11 +22,26 @@ with open('arr2.pkl', 'rb') as file:
     test_arr = pickle.load(file)
 
 
-# example 1
-def get_fixed_point(arr):
-    for id, item in enumerate(arr):
-        if id == item:
-            return id
+# def get_fixed_point(arr):
+#     for id, item in enumerate(arr):
+#         if id == item:
+#             return id
+#     return False
+
+
+def get_fixed_point(array):
+    low = 0
+    high = len(array) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+
+        if array[mid] < mid:
+            low = mid + 1
+        elif array[mid] > mid:
+            high = mid - 1
+        else:
+            return array[mid]
     return False
 
 
