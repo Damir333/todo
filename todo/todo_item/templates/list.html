@@ -5,19 +5,17 @@
 {% endblock %}
 
 {% block name_list %}
-    <div class="table-data_table-header-item-1">To DO NOW</div>
+    <div class="table-data_table-header-item-1">{{ list_name }}</div>
 {% endblock %}
 
 {% block body %}
-    {% for row in lists %}
+    {% for list in lists %}
         <div class="table-data__table-row">
-            <div class="table-row_table_cell-1">
-                {% if row.is_done %}
-                    <a href="#"><li class="is_done_text">{{ row.name }}</li></a>
-                {% else %}
-                    <a href="#"><li>{{ row.name }}</li></a>
-                {% endif %}
-            </div>
+            {% if list.is_done %}
+                <div class="table-row_table_cell-1 is_done_text"> {{ list.name }}</div>
+            {% else %}
+                <div class="table-row_table_cell-1"> {{ list.name }}</div>
+            {% endif %}
             <div class="buttons">
                 <div class="table-data-two_table-icon">
                     <a href='#'>
@@ -31,10 +29,12 @@
                 </div>
 
                 <div class="calendarik">
-                    {% if row.date %}
-                         {{ row.date }}
+                    {% if list.date %}
+                         {{ list.date }}
                     {% else %}
-                        <a href='#'><img src=" /static/images/calendar.png" alt="calendar" width="26px" height="24px"></a>
+                        <a href='#'>
+                            <img src=" /static/images/calendar.png" alt="calendar" width="26px" height="24px">
+                        </a>
                     {% endif %}
                 </div>
                 <div class="table-row_table_icon">
@@ -53,8 +53,9 @@
 {% endblock %}
 
 {% block empty %}
-    {% for i in lists|get_count %}
-        <div class="table-data__table-row"></div>
-        <div class="table-row_table_cell-1"></div>
+    {% for _ in lists|get_count %}
+        <div class="table-data__table-row">
+            <div class="table-row_table_cell-1"></div>
+        </div>
     {% endfor %}
 {% endblock %}

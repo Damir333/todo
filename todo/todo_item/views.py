@@ -1,23 +1,15 @@
 from django.shortcuts import render
-from todo_item.models import ItemModel
+from todo_item.models import ListItem
+from main.models import ListModel
 
 
-def item_view(request):
-    lists = ItemModel.objects.filter(
-        listmodel=request.user,
-        id=5
-    )
-
-    # new_list = [
-    #     ListModel.objects.create(
-    #         name=f'Новый список{i}',
-    #         user=request.user
-    #     )
-    #     for i in [5, 6, 7]
-    # ]
+def item_view(request, pk):
+    list_ = ListModel.objects.select_related('user').get(id=pk)
+    list_items = ListItem.objects.filter(list_model=list_)
 
     context = {
-        'lists': lists,
-        'user_name': request.user.username
+        'lists': list_items,
+        'user_name': list_.user.username,
+        'list_name': list_.name
     }
     return render(request, 'list.html', context)
